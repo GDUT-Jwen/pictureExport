@@ -22,23 +22,6 @@
 </head>
 
 <body>
-<!-- 输出普通字符 -->
-${msg } <br/>
-<!-- 输出List -->
-<p>书籍列表</p>
-<div>
-<c:forEach items="${bookList}" var="node">
-    <span>${node}</span>
-</c:forEach>
-</div>
-<br/>
-<br/>
-
-<!-- 输出Map -->
-<c:forEach items="${map}" var="node">
-  姓名：<c:out value="${node.key}"></c:out>
-  住址：<c:out value="${node.value}"></c:out>
-  <br/>
-</c:forEach>
+ <h1>成功创建!</h1>
 </body>
 </html>
