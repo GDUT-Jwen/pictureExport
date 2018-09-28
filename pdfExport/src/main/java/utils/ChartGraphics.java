@@ -42,7 +42,7 @@ public class ChartGraphics {
 
     /**
      *
-     * @param map
+     * @param map 输入信息
      * @param id
      * @param outputFileUrl 输出文件路径
      * @param imgurl  输入文件路径
@@ -53,6 +53,7 @@ public class ChartGraphics {
         String name = map.get("name");
         //名次
         String level = map.get("level");
+
 
         int imageWidth = 1334;  //图片的宽度
         int imageHeight = 1001; //图片的高度
