@@ -1,0 +1,21 @@
+.pic-content{
+    text-align: center;
+}
+
+.box{
+    display: -webkit-flex; /* Safari */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+li{
+    flex: 1;
+    text-align: center;
+    display: block;
+    width: 400px;
+    height: 400px;
+    margin: 5px;
+}
+

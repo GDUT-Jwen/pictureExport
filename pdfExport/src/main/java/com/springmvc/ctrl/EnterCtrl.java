@@ -20,10 +20,10 @@ public class EnterCtrl {
 
         // List
         List<String> list = new ArrayList<String>();
-        list.add("java");
-        list.add("c++");
-        list.add("oracle");
-        mav.addObject("bookList", list);
+        list.add("1.jpg");
+        list.add("2.jpg");
+        list.add("input.jpg");
+        mav.addObject("picList", list);
 
         // Map
         Map<String, String> map = new HashMap<String, String>();
