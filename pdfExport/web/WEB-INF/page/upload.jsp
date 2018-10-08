@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="utf8">
-    <script type="text/javascript" src="./js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="../../js/jquery-1.8.2.min.js"></script>
     <title>My JSP 'index.jsp' starting page</title>
     <%--<script type="text/javascript">
         //ajax 方式上传文件操作

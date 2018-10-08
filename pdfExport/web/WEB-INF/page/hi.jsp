@@ -16,9 +16,7 @@
   <meta http-equiv="expires" content="0">
   <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
   <meta http-equiv="description" content="This is my page">
-  <!--
-  <link rel="stylesheet" type="text/css" href="styles.css">
-  -->
+  <link rel="stylesheet" type="text/css" href="./css/main.css">
 </head>
 
 <body>
@@ -28,7 +26,7 @@ ${msg } <br/>
 <p>书籍列表</p>
 <div>
 <c:forEach items="${bookList}" var="node">
-    <span>${node}</span>
+    <span class="main-content">${node}</span>
 </c:forEach>
 </div>
 <br/>
