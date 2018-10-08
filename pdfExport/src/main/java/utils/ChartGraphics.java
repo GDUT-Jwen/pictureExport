@@ -2,10 +2,12 @@ package utils;
 
 import com.sun.image.codec.jpeg.JPEGCodec;
 import com.sun.image.codec.jpeg.JPEGImageEncoder;
+import org.springframework.util.StringUtils;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.BufferedOutputStream;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -16,11 +18,27 @@ public class ChartGraphics {
     private static BufferedImage image;
 
     //生成图片文件
-    private static void createImage(String fileLocation) {
+    private static void createImage(String filePath,String fileName) {
         BufferedOutputStream bos = null;
         if(image != null){
             try {
-                FileOutputStream fos = new FileOutputStream(fileLocation);
+                File folder =  new File(filePath);
+                if(!folder.exists()) {
+                    folder.mkdirs();
+                }
+
+                // 如果文件不存在就创建
+                File file = new File(filePath + fileName);
+                if (!file.exists()) {
+                    System.out.println("文件不存在，创建文件:" + filePath + fileName);
+                    try {
+                        file.createNewFile();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                FileOutputStream fos = new FileOutputStream(filePath + fileName);
                 bos = new BufferedOutputStream(fos);
 
                 JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(bos);
@@ -47,7 +65,7 @@ public class ChartGraphics {
      * @param outputFileUrl 输出文件路径
      * @param imgurl  输入文件路径
      */
-    public static void graphicsGeneration(Map<String,String> map, String id, String outputFileUrl, String imgurl) {
+    public static void graphicsGeneration(Map<String,String> map, String id, String outputFilePath,String fileName, String imgurl) {
 
         //姓名
         String name = map.get("name");
@@ -105,7 +123,7 @@ public class ChartGraphics {
         String dateTime = sdf.format(new Date());
         btn1.drawString(dateTime, imageWidth-250, bottomFont + 200);
 
-        createImage(outputFileUrl);
+        createImage(outputFilePath,fileName);
 
     }
 

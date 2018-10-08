@@ -8,6 +8,7 @@ import utils.ChartGraphics;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -19,7 +20,10 @@ public class ExportImgCtrl {
     public String exportPicture() {
 
         Map studentInfoMap = new HashMap();
-        ChartGraphics.graphicsGeneration(studentInfoMap,"","H:\\output.jpg","H:\\20180907180309.jpg");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+        String outputPath = "H:\\" + sdf.format(new Date()) + "\\";
+        ChartGraphics.graphicsGeneration(studentInfoMap,"",outputPath,"output.jpg","H:\\20180907180309.jpg");
 
         return "success";
     }

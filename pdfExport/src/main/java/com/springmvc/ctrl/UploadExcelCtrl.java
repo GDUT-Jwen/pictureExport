@@ -1,10 +1,12 @@
 package com.springmvc.ctrl;
 
 
+import com.springmvc.service.ExcelHandleService;
 import jxl.Sheet;
 import jxl.Workbook;
 import jxl.read.biff.BiffException;
 import jxl.write.WriteException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
@@ -17,6 +19,10 @@ import java.util.*;
 
 @Controller
 public class UploadExcelCtrl {
+
+    @Autowired
+    private ExcelHandleService excelHandleService;
+
 
     /**
      * 上传文件
@@ -52,18 +58,14 @@ public class UploadExcelCtrl {
                     case 4:
                         studentInfo.put("days", cellinfo);break;
                 }
-                System.out.print(cellinfo);
             }
             resultList.add(studentInfo);
-            System.out.println();
         }
+
+        excelHandleService.handleExcel(resultList);
 
         System.out.println("总人数 : " + resultList.size());
         return "success";
 
-
-//        WritableWorkbook writableWorkbook = ExcelUtils.createTemplate(response.getOutputStream());
-//        writableWorkbook.write();
-//        writableWorkbook.close();
     }
 }
