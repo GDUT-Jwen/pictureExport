@@ -18,32 +18,11 @@
 </head>
 
 <body>
-<%--<!-- 输出普通字符 -->--%>
-<%--${msg } <br/>--%>
-<%--<!-- 输出List -->--%>
-<%--<p>书籍列表</p>--%>
-<%--<div>--%>
-  <%--<ul>--%>
-<%--<c:forEach items="${bookList}" var="node">--%>
-    <%--<li class="main-content">${node}</li>--%>
-<%--</c:forEach>--%>
-  <%--</ul>--%>
-<%--</div>--%>
-<%--<br/>--%>
-<%--<br/>--%>
-
-<%--<!-- 输出Map -->--%>
-<%--<c:forEach items="${map}" var="node">--%>
-  <%--姓名：<c:out value="${node.key}"></c:out>--%>
-  <%--住址：<c:out value="${node.value}"></c:out>--%>
-  <%--<br/>--%>
-<%--</c:forEach>--%>
-
 
 <ul class="box">
   <c:forEach items="${picList}" var="pic">
     <div class="pic-content">
-    <li value="${pic}" style="background: url('./images/${pic}');background-size: 100% 100%;"></li>
+    <li style="background: url('./images/${pic}');background-size: 100% 100%;"></li>
     <span>${pic}</span>
     </div>
   </c:forEach>

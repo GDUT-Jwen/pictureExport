@@ -5,7 +5,7 @@ import java.util.Map;
 
 public interface ExcelHandleService {
 
-    void handleExcel(List<Map<String,String>> excelList);
+    void handleExcel(String pic,List<Map<String,String>> excelList);
 
 }
 

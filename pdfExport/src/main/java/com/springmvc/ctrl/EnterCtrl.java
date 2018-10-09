@@ -4,10 +4,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 public class EnterCtrl {
@@ -16,29 +15,24 @@ public class EnterCtrl {
     public ModelAndView sayHiPage() {
         ModelAndView mav = new ModelAndView();
         mav.setViewName("hi");
-        mav.addObject("msg", "hello kitty");
-
         // List
         List<String> list = new ArrayList<String>();
         list.add("1.jpg");
         list.add("2.jpg");
-        list.add("input.jpg");
+        list.add("3.jpg");
+        list.add("4.jpg");
+        list.add("5.jpg");
         mav.addObject("picList", list);
-
-        // Map
-        Map<String, String> map = new HashMap<String, String>();
-        map.put("zhangsan", "北京");
-        map.put("lisi", "上海");
-        map.put("wangwu", "深圳");
-        mav.addObject("map", map);
 
         return mav;
     }
 
 
     @RequestMapping("/upload")
-    public ModelAndView uploadFilePage() {
+    public ModelAndView uploadFilePage(HttpServletRequest request) {
         ModelAndView mav = new ModelAndView();
+        String pic=request.getParameter("pic");
+        mav.addObject("picName",pic);
         mav.setViewName("upload");
         return mav;
     }

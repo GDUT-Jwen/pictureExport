@@ -16,7 +16,7 @@ public class FlightTrainTask {
 
     @Scheduled(cron = "0/5 * * * * ? ") // 间隔5秒执行
     public void taskCycle() throws IOException, TimeoutException {
-        System.out.println("使用SpringMVC框架配置定时任务");
+//        System.out.println("使用SpringMVC框架配置定时任务");
         customer.getMessage();
     }
 }

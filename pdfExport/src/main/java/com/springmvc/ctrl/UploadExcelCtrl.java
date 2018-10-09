@@ -9,6 +9,7 @@ import jxl.write.WriteException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -31,9 +32,12 @@ public class UploadExcelCtrl {
      * @throws Exception
      */
     @RequestMapping("/uploadFile")
-        public String upload(HttpServletRequest request, HttpServletResponse response) throws IOException, WriteException, BiffException {
+    @ResponseBody
+        public String response (HttpServletRequest request, HttpServletResponse response) throws IOException, WriteException, BiffException {
         MultipartHttpServletRequest mRequest = (MultipartHttpServletRequest) request;
+
         MultipartFile file = mRequest.getFile("file");
+        String pic = mRequest.getParameter("pic");
         Workbook workbook = Workbook.getWorkbook(file.getInputStream());
         List<Map<String,String>> resultList = new ArrayList<>();
         //遍历Sheet页
@@ -52,19 +56,20 @@ public class UploadExcelCtrl {
                     case 1:
                         studentInfo.put("name", cellinfo);break;
                     case 2:
-                        studentInfo.put("exp", cellinfo);break;
+                        studentInfo.put("score", cellinfo);break;
                     case 3:
-                        studentInfo.put("studyTime", cellinfo);break;
+                        studentInfo.put("studyHour", cellinfo);break;
                     case 4:
-                        studentInfo.put("days", cellinfo);break;
+                        studentInfo.put("runningDay", cellinfo);break;
                 }
             }
             resultList.add(studentInfo);
         }
 
-        excelHandleService.handleExcel(resultList);
+        excelHandleService.handleExcel(pic,resultList);
 
         System.out.println("总人数 : " + resultList.size());
+
         return "success";
 
     }

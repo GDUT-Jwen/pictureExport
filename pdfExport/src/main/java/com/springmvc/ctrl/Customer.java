@@ -26,7 +26,7 @@ public class Customer {
         Channel channel = connection.createChannel();
         //声明要关注的队列
         channel.queueDeclare(QUEUE_NAME, false, false, true, null);
-        System.out.println("Customer Waiting Received messages");
+//        System.out.println("Customer Waiting Received messages");
         //DefaultConsumer类实现了Consumer接口，通过传入一个频道，
         // 告诉服务器我们需要那个频道的消息，如果频道中有消息，就会执行回调函数handleDelivery
         Consumer consumer = new DefaultConsumer(channel) {
@@ -38,11 +38,21 @@ public class Customer {
                 System.out.println("Customer Received '" + message + "'");
 
                 Map studentInfoMap = new HashMap();
+
+                Map imgInfo = new HashMap();
+
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
                 String outputPath = "H:\\" + sdf.format(new Date()) + "\\";
 
-                ChartGraphics.graphicsGeneration(studentInfoMap,"",outputPath,"output.jpg","H:\\input.jpg");
+                imgInfo.put("id","5.jpg");
+
+                imgInfo.put("outputFilePath",outputPath);
+                imgInfo.put("fileName","output.jpg");
+                imgInfo.put("imgurl","H:\\5.jpg");
+
+
+                ChartGraphics.graphicsGeneration(studentInfoMap,imgInfo);
             }
         };
         //自动回复队列应答 -- RabbitMQ中的消息确认机制
